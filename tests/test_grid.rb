@@ -23,7 +23,16 @@ class TestGrid < MiniTest::Test
 
 	def test_subgrid
 		assert_equal [0, 0, 5, 7, 0, 4, 0, 3, 2], @grid.subgrids(0)
+		assert_equal [2, 0, 0, 7, 0, 3, 0, 6, 0], @grid.subgrids(71)
 	end
 end
 
+
+class TestCell < MiniTest::Test
+
+	def setup
+		@unsolved = Grid.new("009280000600004103105007490080405670200600301700823004861000530400500210030096007")
+		@"349281765678954123125367498983415672254679381716823954861742549497538216532196847"
+	end
+end
 
