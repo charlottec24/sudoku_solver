@@ -26,9 +26,18 @@ class Grid
 	end
 
 	def subgrids(cell_index)
-		row_block_index = @row_index / 3
-		column_block_index = @column_index / 3
+		row_block_index = (cell_index / 9) / 3
+		column_block_index = (cell_index % 9) / 3
 		subgrid_start_row_index = (3 * row_block_index * 9) + (3 * column_block_index)
+		subgrid_values = []
+		subgrid_values << @sudoku_string[subgrid_start_row_index]
+		2.times do
+			subgrid_values << @sudoku_string[subgrid_start_row_index + 1]
+			subgrid_values << @sudoku_string[subgrid_start_row_index + 2]
+			subgrid_values << @sudoku_string[subgrid_start_row_index += 9]	
+		end
+		subgrid_values << @sudoku_string[subgrid_start_row_index + 1]
+		subgrid_values << @sudoku_string[subgrid_start_row_index + 2]
 		subgrid_values
 	end
 end
