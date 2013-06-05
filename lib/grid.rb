@@ -7,20 +7,19 @@ class Grid
 	end
 
 	def rows(cell_index)
-		@row_index = cell_index / 9
-		row_start_index = @row_index * 9
-		row_end_index = row_start_index + 9 - 1
-		@sudoku_string[row_start_index..row_end_index]
+		# row_start_index = (cell_index / 9) * 9
+		# row_end_index = row_start_index + 8
+		@sudoku_string[(cell_index / 9) * 9..((cell_index / 9) * 9) + 8]
 	end
 	# @sudoku_string.each_slice(9).to_a
 
 
 	def columns(cell_index)
-		@column_index = cell_index % 9
+		column_index = cell_index % 9
 		column_values = []
-		column_values << @sudoku_string[@column_index]
+		column_values << @sudoku_string[column_index]
 		8.times do
-			column_values << @sudoku_string[@column_index += 9]
+			column_values << @sudoku_string[column_index += 9]
 		end
 		column_values
 	end
@@ -31,13 +30,12 @@ class Grid
 		subgrid_start_row_index = (3 * row_block_index * 9) + (3 * column_block_index)
 		subgrid_values = []
 		subgrid_values << @sudoku_string[subgrid_start_row_index]
-		2.times do
+		3.times do |x|
 			subgrid_values << @sudoku_string[subgrid_start_row_index + 1]
 			subgrid_values << @sudoku_string[subgrid_start_row_index + 2]
+			break if x == 2
 			subgrid_values << @sudoku_string[subgrid_start_row_index += 9]	
 		end
-		subgrid_values << @sudoku_string[subgrid_start_row_index + 1]
-		subgrid_values << @sudoku_string[subgrid_start_row_index + 2]
 		subgrid_values
 	end
 end
