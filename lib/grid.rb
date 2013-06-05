@@ -38,4 +38,26 @@ class Grid
 		end
 		subgrid_values
 	end
+
+	def not_solved
+		@sudoku_string.any? {|n| n == 0}
+	end
+
+	def solve
+		while not_solved
+			@sudoku_string.each_with_index do |item, index|				
+				next if item != 0
+				possible_values = (1..9).to_a - rows(index) - columns(index) - subgrids(index)
+				if possible_values.length == 1
+					@sudoku_string[index] = possible_values.first
+				end
+				# if item == 0 || item.size > 1
+				# 	item = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+				# 	item = item - rows(index) - columns(index) - subgrids(index)
+				# else 
+				# 	item
+				# end
+			end
+		end		
+	end
 end
