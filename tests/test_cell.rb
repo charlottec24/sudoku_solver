@@ -23,7 +23,6 @@ class Test < MiniTest::Test
 	end
 
 	def test_can_calculate_neighbours
-		
 	end
 
 end

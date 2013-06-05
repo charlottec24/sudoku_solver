@@ -3,7 +3,7 @@ class Grid
 	attr_accessor :sudoku_array
 
 	def initialize(input)
-		@sudoku_array = input.split('').map { |value| Cell.new(value) }
+		@sudoku_array = input.split('').map { |value| Cell.new(value.to_i) }
 	end
 
 	def rows(cell_index)
@@ -36,12 +36,12 @@ class Grid
 	end
 
 	def solved?
-		@cells.all(&:solved?)
+		@sudoku_array.all?(&:solved?)
 	end
 
-	def not_solved		
-		@sudoku_array.any? {|n| n == 0}
-	end
+	# def not_solved		
+	# 	@sudoku_array.any? {|n| n == 0}
+	# end
 
 	# def solve
 	# 	while not_solved
@@ -49,17 +49,15 @@ class Grid
 	# 			next if item != 0
 	# 			possible_values = (1..9).to_a - rows(index) - columns(index) - subgrids(index)
 	# 			if possible_values.length == 1
-	# 				@sudoku_array[index] = possible_values.first
 	# 			end
 	# 		end
 	# 	end		
 	# end
 
 	def solve
-		while not_solved
-			@sudoku_array.each_with_index do |item, index|				
-				next if item != 0
-				item.update(rows(index), columns(index), subgrids(index))
+		while !solved?
+			@sudoku_array.each_with_index do |cell, index|
+				cell.update(rows(index) + columns(index) + subgrids(index)) unless cell.solved?
 			end
 		end		
 	end
