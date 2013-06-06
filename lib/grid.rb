@@ -42,11 +42,8 @@ class Grid
 		@sudoku_array.all?{|x| x.solved?}
 	end
 
-	def solve
-		while !solved?
-			@sudoku_array.each_with_index do |cell, index|
-				cell.update(rows(index) + columns(index) + subgrids(index)) unless cell.solved?
-			end
-		end		
+	def neighbours(index)
+		rows(index) + columns(index) + subgrids(index)
 	end
+
 end

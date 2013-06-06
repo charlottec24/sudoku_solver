@@ -1,7 +1,7 @@
 require 'minitest/autorun'
 require '../lib/cell.rb'
 
-class Test < MiniTest::Test
+class TestCell < MiniTest::Test
 
 	def test_cell_accept_value
 		cell = Cell.new(5)
@@ -17,7 +17,7 @@ class Test < MiniTest::Test
 		cell = Cell.new(0)
 		neighbours = [1,2,3,4,6,7,8,9].map{|n| Cell.new(n)}
 		refute cell.solved?
-		cell.update(neighbours)
+		cell.update_value(neighbours)
 		assert cell.solved?
 		assert_equal 5, cell.value
 	end
