@@ -36,23 +36,8 @@ class Grid
 	end
 
 	def solved?
-		@sudoku_array.all?(&:solved?)
+		@sudoku_array.all?{|x| x.solved?}
 	end
-
-	# def not_solved		
-	# 	@sudoku_array.any? {|n| n == 0}
-	# end
-
-	# def solve
-	# 	while not_solved
-	# 		@sudoku_array.each_with_index do |item, index|				
-	# 			next if item != 0
-	# 			possible_values = (1..9).to_a - rows(index) - columns(index) - subgrids(index)
-	# 			if possible_values.length == 1
-	# 			end
-	# 		end
-	# 	end		
-	# end
 
 	def solve
 		while !solved?

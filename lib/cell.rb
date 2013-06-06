@@ -17,21 +17,4 @@ class Cell
 		end
 	end
 
-	# def update(rows, columns, subgrids)
-	# 	possible_values = (1..9).to_a - rows - columns - subgrids
-	# 	if possible_values.length == 1
-	# 		@value = possible_values.first
-	# 	end
-	# end
-
-
-
-	# def update(neighbours)
-	# 	neighbours = rows(index) - columns(index) - subgrids(index)
-	# 	possible_values = (1..9).to_a - neighbours
-	# 	if possible_values.length == 1
-	# 		@sudoku_string[index] = possible_values.first
-	# 	end
-	# end
-
 end

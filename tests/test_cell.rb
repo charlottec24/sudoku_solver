@@ -22,7 +22,4 @@ class Test < MiniTest::Test
 		assert_equal 5, cell.value
 	end
 
-	def test_can_calculate_neighbours
-	end
-
 end
