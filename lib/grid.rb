@@ -26,7 +26,7 @@ class Grid
 		subgrid_values = []
 		(0..2).each do |x|
 			(0..2).each do |y|
-				subgrid_values << @sudoku_array[subgrid_start_row_index + (9 * x) + y]	
+				subgrid_values << @sudoku_array[subgrid_start_row_index + (9 * x) + y]
 			end
 		end
 		subgrid_values

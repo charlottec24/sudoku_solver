@@ -13,9 +13,9 @@ class TestGrid < MiniTest::Test
 		assert_equal 06, @grid.sudoku_array[4].value
 	end	
 
-  	def test_row
-  		assert_equal [7, 0, 4, 0, 0, 0, 0, 0, 0], cells_to_values(@grid.rows(11)) 
-  	end
+	def test_row
+		assert_equal [7, 0, 4, 0, 0, 0, 0, 0, 0], cells_to_values(@grid.rows(11)) 
+	end
 	
 	def test_column
 		assert_equal [0, 0, 4, 0, 0, 0, 0, 3, 0], cells_to_values(@grid.columns(35))
